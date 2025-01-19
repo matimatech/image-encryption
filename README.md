@@ -1,20 +1,34 @@
-# Hill Image Cipher
-This project is an application of the Hill cipher algorithm to encrypt and decrypt images
+# Image Encryption
+---
+Projek ini merupakan implementasi dari algoritma kriptografi Advance Hill Cipher (AdvHill) dengan kunci terenkripsi ElGamal untuk enkripsi citra digital berwarna.
 
+### Todo:
+- [x] Membangkit matriks kunci self invertible
+- [ ] Mengimplementasikan algoritma Advance Hill Cipher dengan mengacukan pada paper (Acharya et al)
+- [ ] Mengimplementasikan algoritma ElGamal
+- [ ] Mengecek performa dari algoritma enkripsi
+- [ ] Membuat web aplikasi dengan menggunakan flask sebagai framework dasar
+
+### Hasil:
+### 
 Original Image
-<br>
-<img src="https://github.com/Ilyes-Hammadi/hill-image-cipher/blob/master/docs/images/face.png" height="200px"/>
+<img src="docs/images/face.png" alt="isolated" width="200"/>
 
 Encoded Image
-<br>
-<img src="https://github.com/Ilyes-Hammadi/hill-image-cipher/blob/master/docs/images/face-encoded.png" height="200px"/>
+<img src="docs/images/face-encoded.png" alt="isolated" width="200"/>
 
 
-## Run the project
+## Menjalankan Projek
 ### Get the code
 ```shell
-$ git clone https://github.com/Ilyes-Hammadi/hill-image-cipher.git
-$ cd hill-image-cipher
+$ git clone https://github.com/matimatech/image-encryption.git
+$ cd image-encryption
+```
+
+### Create virtual environment
+```shell
+$ python3 -m venv venv
+$ source venv/bin/activate
 ```
 
 ### Install dependencies
@@ -24,5 +38,7 @@ $ pip install -r requirements.txt
 
 ### Encode an image
 ```shell
-$ python main.py image.jpg
+$ python3 main.py image.jpg
 ```
+
+### Source:

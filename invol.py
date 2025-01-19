@@ -1,22 +1,41 @@
+import random
 import numpy as np
+from numpy.linalg import eig
 
+
+#TODO: Generate A_22 ==> (n-1)x(n-1)
 
 def generate_involutory_matrix(n):
-    a11 = np.mod(np.random.random_integers(0, 100, (int(n / 2), int(n / 2))), 31)
-    a12 = np.mod(-a11, 31)
+    """
+    Generate involutory matrix
+    Paramater:
+    n: size of matrix
 
-    return a11, a12
+    Return:
+    A: matrix involutory
+    """
 
-    # while true:
-    #     # generate a random integer matrix
-    #     matrix = np.random.randint(0, 10, (n, n))
-    #
-    #     # check if the matrix is involutory: matrix * matrix = identity matrix (mod 26 for hill cipher)
-    #     if np.array_equal(np.mod(np.dot(matrix, matrix), 26), np.identity(n)):
-    #         return matrix
+    A_22 = np.random.randint(256, size = (int(n/2),int(n/2)))          #Arbitrary Matrix, should be saved as Key also
+    
+    MOD = 256
+    k = 23 
 
+    I = np.identity(int(n/2))
+    A_11 = np.mod(-A_22,MOD)
 
-a11, a12 = generate_involutory_matrix(81)
-print(f"a11 {a11}")
-print(f"a11 shape {a11.shape}")
-print(f"a12 {a12}")
+    A_12= np.mod((k * np.mod(I - A_11, MOD)), MOD)
+    k = np.mod(np.power(k, 127), MOD)
+    A_21 = np.mod((I + A_11), MOD)
+    A_21 = np.mod(A_21 * k, MOD)
+
+    A1 = np.concatenate((A_11, A_12), axis = 1)
+    A2 = np.concatenate((A_21, A_22), axis = 1)
+
+    A = np.concatenate((A1,A2), axis = 0)
+    
+    Test = np.mod(np.matmul(np.mod(A, MOD), np.mod(A, MOD)), MOD)
+
+    return A, Test
+
+A, _ = generate_involutory_matrix(6)
+print(A)
