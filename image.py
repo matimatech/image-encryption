@@ -1,16 +1,30 @@
 import numpy as np
 from PIL import Image
+import imageio.v3 as iio
 
 def read_image(image_path):
-    """Read an image and return a one hot vector of the image"""
-    img = Image.open(image_path)
-    reshape_value = 1
-    print(f"IMG SHAPE {img.size}")
+    """
+    Read an image and return a one hot vector of the image
+    If size of an image is odd, transform the img to even size image
 
-    # for i in img.shape:
-    #     reshape_value *= i
+    Parameter:
+    image_path: path of the image
 
-    # return img.reshape((1, reshape_value)), img.shape
+    Return:
+    img2: Transformed image object
+    """
+    img = iio.imread(image_path)
+    l = img.shape[0]
+    w = img.shape[1]
+
+    n = max(l, w)
+    if n % 2:
+        n += 1
+    img2 = np.zeros((n, n, 3))
+    img2[:l, :w, :] += img
+    print(img)
+    return img2
+
 
 def show_image(image):
     """Show a single image"""
@@ -25,4 +39,4 @@ def show_images(a, b):
     while 1:
         plt.show()
 
-read_image("docs/images/lena.png")
+# read_image("docs/images/lena.png")

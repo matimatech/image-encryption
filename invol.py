@@ -65,32 +65,8 @@ img2 = np.zeros((n,n,3))
 img2[:l,:w,:] += img    
 A, _ = generate_involutory_matrix(n)
 
-# Saving key as an image
-key = np.zeros((n + 1, n))
-key[:n, :n] += A
-# Adding the dimension of the original image within the key
-# Elements of the matrix should be below 256
-Mod = 256
-key[-1][0] = int(l / Mod)
-key[-1][1] = l % Mod
-key[-1][2] = int(w / Mod)
-key[-1][3] = w % Mod
-key = key.astype(np.uint8)
-
-
-iio.imwrite("Key.png", key)
-
 #-------------Encrypting-------------
-Enc1 = (np.matmul(A % Mod,img2[:,:,0] % Mod)) % Mod
-Enc2 = (np.matmul(A % Mod,img2[:,:,1] % Mod)) % Mod
-Enc3 = (np.matmul(A % Mod,img2[:,:,2] % Mod)) % Mod
 
-Enc1 = np.resize(Enc1,(Enc1.shape[0],Enc1.shape[1],1))
-Enc2 = np.resize(Enc2,(Enc2.shape[0],Enc2.shape[1],1))
-Enc3 = np.resize(Enc3,(Enc3.shape[0],Enc3.shape[1],1))
-Enc = np.concatenate((Enc1,Enc2,Enc3), axis = 2)                #Enc = A * image
-Enc = Enc.astype(np.uint8)
-iio.imwrite('Encrypted.png', Enc)
 
 #-------------Decrypting-------------
 Enc = iio.imread('Encrypted.png')                           #Reading Encrypted Image to Decrypt
