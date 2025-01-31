@@ -7,7 +7,7 @@ Projek ini merupakan implementasi dari algoritma kriptografi Advance Hill Cipher
 - [ ] Mengimplementasikan algoritma Advance Hill Cipher dengan mengacukan pada paper (Acharya et al)
 - [ ] Mengimplementasikan algoritma ElGamal
 - [ ] Mengecek performa dari algoritma enkripsi
-- [ ] Membuat web aplikasi dengan menggunakan flask sebagai framework dasar
+- [ ] Membuat web aplikasi dengan menggunakan streamlit 
 
 ### Hasil:
 ### 
