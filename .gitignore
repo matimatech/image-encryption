@@ -1,6 +1,4 @@
 *.pyc
 .vscode/
 venv
-*.png
-*.jpeg
-*.jpg
+docs/images

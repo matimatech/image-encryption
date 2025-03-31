@@ -11,15 +11,16 @@ if __name__ == "__main__":
         raise Exception("Missing image file name")
 
     img, img2  = read_image(image_file_name)
+    print(img.shape)
+    print(img2.shape)
 
     hill = AdvHill(img2)
-    encrypted_img = hill.encrypt(img2.shape[0])
+    hill._generate_key(img2.shape[0])
+    encrypted_img = hill.encrypt()
     print(f"ENCRYPT: {encrypted_img.shape}")
     decrypted_img = hill.decrypt(encrypted_img)
     print(f"DECRYPT: {decrypted_img.shape}")
     print(encrypted_img)
 
-    show_image(img)
-    show_image(encrypted_img)
     # psnr = PSNR(img, decryptecd_img)
     # print(psnr)

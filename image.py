@@ -28,7 +28,7 @@ def read_image(image_path):
     img2 = np.zeros((n, n, 3))
     print(img2.ndim)
     img2[:l, :w, :] += img
-    print(img2.shape)
+    # print(img2.shape)
     return img, img2
 
 def show_image(img):

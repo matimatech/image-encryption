@@ -1,6 +1,4 @@
 from math import log10, sqrt 
-import numpy as np 
-  
 def PSNR(original, compressed): 
     mse = np.mean((original - compressed) ** 2) 
     if(mse == 0):  # MSE is zero means no noise is present in the signal . 

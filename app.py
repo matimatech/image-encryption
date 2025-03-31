@@ -1,5 +1,5 @@
 import streamlit as st
-from hill import Hill
+from hill import AdvHill 
 from image import read_image
 from PIL import Image
 import imageio.v3 as iio
@@ -11,10 +11,9 @@ uploaded_file = st.file_uploader("Choose an image ...", type=["jpg", "jpeg", "pn
 
 if uploaded_file:
     real_img, modified_img = read_image(uploaded_file)
-    # hill = Hill(img, )
     st.image(real_img, caption="Original Image", clamp=True, channels='RGB')
     print(uploaded_file)
-    hill = Hill(modified_img)
+    hill = AdvHill(modified_img)
     # st.write(filename)
 
     encrypted_img = hill.encrypt(modified_img.shape[0])
