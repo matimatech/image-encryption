@@ -1,4 +1,8 @@
 *.pyc
 .vscode/
+<<<<<<< HEAD
 venv
 docs/images
+=======
+venv
+>>>>>>> parent of f6f60f0 (refactor hill code, consider to change img procs lib to Pillow)

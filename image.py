@@ -1,5 +1,6 @@
-import matplotlib.pyplot as plt
 import numpy as np
+import matplotlib.pyplot as plt
+from PIL import Image
 import imageio.v3 as iio
 
 def read_image(image_path):
@@ -16,22 +17,27 @@ def read_image(image_path):
     img = iio.imread(image_path)
     l = img.shape[0]
     w = img.shape[1]
-    print(f"SHAPE {l, w}")
-    print(img.ndim)
 
-    #BUG: bug in (256 x 256) px RGBA
-    # RGBA not working well
     n = max(l, w)
-    print(f"MAX {n}")
     if n % 2:
         n += 1
     img2 = np.zeros((n, n, 3))
-    print(img2.ndim)
     img2[:l, :w, :] += img
-    # print(img2.shape)
+    # print(img)
     return img, img2
 
-def show_image(img):
-    plt.figure()
-    plt.imshow(img)
+
+def show_image(image):
+    """Show a single image"""
+    plt.imshow(image)
     plt.show()
+
+
+def show_images(a, b):
+    """Show two images side by side"""
+    plot_image = np.concatenate((a, b), axis=1)
+    plt.imshow(plot_image)
+    while 1:
+        plt.show()
+
+# read_image("docs/images/lena.png")
