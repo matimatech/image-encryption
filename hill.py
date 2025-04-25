@@ -40,6 +40,7 @@ class AdvHill:
     def encrypt(self, n):
         """Encrypt function"""
         self._generate_key(n)
+        print(self.file_name)
         Enc1 = (np.matmul(self.key % self.mod, self.img[:,:,0] % self.mod)) % self.mod 
         Enc2 = (np.matmul(self.key % self.mod, self.img[:,:,1] % self.mod)) % self.mod 
         Enc3 = (np.matmul(self.key % self.mod, self.img[:,:,2] % self.mod)) % self.mod 
